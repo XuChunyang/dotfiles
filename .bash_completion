@@ -1,0 +1,62 @@
+# My personal local completion                             -*- shell-script -*-
+# Time-stamp: <2016-11-21 19:04:53 xcy>
+
+_emacs ()
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts='--help --version -L --directory --l --load --script --daemon --debug-init -Q --reverse-video --no-desktop --no-window-system --batch --eval --funcall'
+    
+    case $prev in
+        --help|--version)
+            return
+            ;;
+        -L|--directory)
+            COMPREPLY=( $(compgen -d ${cur}) )
+            return
+            ;;
+        -l|--load|--script)
+            COMPREPLY=( $(compgen -f ${cur}) )
+            return
+            ;;
+    esac
+
+    COMPREPLY=( $(compgen -f -W "${opts}" -- ${cur}) )
+}
+complete -F _emacs emacs
+
+_emacsclient ()
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts='
+    --version
+    --help
+    --tty
+    --create-frame
+    --eval
+    --no-wait
+    --quiet
+    --socket-name
+    --server-file
+    --alternate-editor
+    '
+
+    COMPREPLY=( $(compgen -f -W "${opts}" -- ${cur}) )
+}
+complete -F _emacsclient emacsclient
+
+eval "$(pandoc --bash-completion)"
+
+# Use a custom version: 1) enable git-ls-files 2) support the alias dotfiles
+# cp /usr/share/bash-completion/completions/git ~/.git-completion.bash
+. .git-completion.bash
+
+# s-search <https://github.com/zquestz/s>
+. ~/src/s/autocomplete/s-completion.bash
+
+# ex: ts=4 sw=4 et filetype=sh
