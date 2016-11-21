@@ -1,4 +1,4 @@
-# -*- default-directory: "~/.dotfiles"; -*-
+# -*- default-directory: "~/.dotfiles/"; -*-
 
 * [[https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/][The best way to store your dotfiles: A bare Git repository - Atlassian Developers]]
 * TODO Merge dotfiles on Mac OS into this repo (mainly bashrc)
