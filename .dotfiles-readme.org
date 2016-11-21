@@ -1,4 +1,41 @@
 # -*- default-directory: "~/.dotfiles/"; -*-
 
 * [[https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/][The best way to store your dotfiles: A bare Git repository - Atlassian Developers]]
+
+  #+BEGIN_SRC sh
+  git init --bare ~/.dotfiles
+  alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+  dotfiles config --local status.showUntrackedFiles no
+  #+END_SRC
+
 * TODO Merge dotfiles on Mac OS into this repo (mainly bashrc)
+
+  Tip: Read the post from the above link
+
+* DONE How to use Magit to manage this repo (a bare git repository)?
+
+  In shell, I use the =dotfiles= alias to manage the repo.
+
+  #+BEGIN_SRC sh
+  alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+  #+END_SRC
+
+  It seems temporarily adding =--git-dir=$HOME/.dotfiles= and
+  =--work-tree=$HOME= to =magit-git-global-arguments= works.
+
+  #+BEGIN_SRC emacs-lisp
+  (define-advice magit-process-git-arguments (:around (orig-fun &rest r) dotfiles-hack)
+    "Temporarily add --git-dir=$HOME/.dotfiles and --work-tree=$HOME for the ~/.dotfiles bare Git repository."
+    (if (member (expand-file-name default-directory)
+                (list (expand-file-name "~/.dotfiles/")
+                      (expand-file-name "~/")))
+        (let ((magit-git-global-arguments
+               (append magit-git-global-arguments
+                       (list (format "--work-tree=%s" (expand-file-name "~/"))
+                             (format "--git-dir=%s"   (expand-file-name "~/.dotfiles/"))))))
+          (apply orig-fun r))
+      (apply orig-fun r)))
+  #+END_SRC
+
+  To make =M-x magit-status= work, temporarily set =default-directory= to
+  =~/.dotfiles/= via [[info:elisp#File%20Local%20Variables][info:elisp#File Local Variables]].
