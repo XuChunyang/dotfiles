@@ -1,5 +1,4 @@
 # My personal local completion                             -*- shell-script -*-
-# Time-stamp: <2016-11-21 19:04:53 xcy>
 
 _emacs ()
 {

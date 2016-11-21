@@ -1,4 +1,5 @@
-# Time-stamp: <2016-11-20 22:32:42 xcy>
+# -*- default-directory: "~/.dotfiles"; -*-
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
