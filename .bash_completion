@@ -53,7 +53,7 @@ eval "$(pandoc --bash-completion)"
 
 # Use a custom version: 1) enable git-ls-files 2) support the alias dotfiles
 # cp /usr/share/bash-completion/completions/git ~/.git-completion.bash
-. .git-completion.bash
+. ~/.git-completion.bash
 
 # s-search <https://github.com/zquestz/s>
 . ~/src/s/autocomplete/s-completion.bash
