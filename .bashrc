@@ -146,7 +146,7 @@ fi
 # git config --global --unset-all http.proxy
 
 # Emacs Supports
-. $HOME/.emacs.d/misc/linux.sh
+. $HOME/.emacs.d/misc/emacs.sh
 
 # Ruby
 # eval "$(rbenv init -)"
