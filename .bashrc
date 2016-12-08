@@ -155,3 +155,6 @@ fi
 . $HOME/src/z/z.sh
 
 alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+
+# travis gem completion
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
