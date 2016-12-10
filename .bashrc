@@ -161,3 +161,12 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 # travis gem completion
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
+
+# e2ansi - Syntax highlighting support for `less`, powered by Emacs
+alias  e2ansi-cat=$HOME/src/e2ansi/bin/e2ansi-cat
+alias e2ansi-info=$HOME/src/e2ansi/bin/e2ansi-info
+
+# Integration with `less`
+export "LESSOPEN=|emacs --batch -l $HOME/src/e2ansi/bin/e2ansi-cat --background-mode dark %s"
+export "LESS=-R"
+export "MORE=-R"
