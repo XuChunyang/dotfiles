@@ -1,4 +1,8 @@
-# -*- default-directory: "~/.dotfiles/"; -*-
+if [[ $OSTYPE == darwin* ]]; then
+    . ~/.bashrc_macOS
+    alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+    return 0
+fi
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)

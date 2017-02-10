@@ -56,6 +56,8 @@ eval "$(pandoc --bash-completion)"
 . ~/.git-completion.bash
 
 # s-search <https://github.com/zquestz/s>
-. ~/src/s/autocomplete/s-completion.bash
+if [ -f ~/src/s/autocomplete/s-completion.bash ]; then
+    . ~/src/s/autocomplete/s-completion.bash
+fi
 
 # ex: ts=4 sw=4 et filetype=sh
