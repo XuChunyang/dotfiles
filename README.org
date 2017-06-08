@@ -1,4 +1,5 @@
 #+TITLE: My Dotfiles in Org mode
+#+CATEGORY: dotfiles
 
 * Meta                                                             :dotfiles:
 
