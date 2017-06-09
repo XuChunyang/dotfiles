@@ -23,7 +23,7 @@
 #+END_SRC
 
 ** TODO Support more tools
-   - [ ] Git
+   - [X] Git
    - [ ] SSH
 
 ** Resources
@@ -385,3 +385,27 @@ on [[http://quotenil.com/OfflineIMAP-with-Encrypted-Authinfo.html][Gábor Melis'
 
 ** Resources
 - [[https://wiki.archlinux.org/index.php/OfflineIMAP][OfflineIMAP - ArchWiki]]
+
+* Git                                                                   :git:
+
+** ~/.gitignore
+
+   #+BEGIN_SRC gitignore :tangle ~/.gitignore :comments link
+     # Folder view configuration files
+     .DS_Store
+   #+END_SRC
+
+** ~/.gitconfig
+
+   #+BEGIN_SRC gitconfig :tangle ~/.gitconfig :comments link
+     [user]
+             name = Chunyang Xu
+             email = mail@xuchunyang.me
+             signingkey = A952083AF6D0A8BF
+     [gpg]
+             program = gpg2
+     [credential]
+             helper = osxkeychain
+     [http]
+             proxy = socks5://localhost:1080
+   #+END_SRC
