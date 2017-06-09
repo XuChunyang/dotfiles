@@ -33,8 +33,37 @@
 - [[https://github.com/mathiasbynens/dotfiles][mathiasbynens/dotfiles: .files, including ~/.macos — sensible hacker defaults for macOS]]
 
 * Passwords                                                       :passwords:
+  :PROPERTIES:
+  :CRYPTKEY: mail@xuchunyang.me
+  :END:
 
 To view and edit these passwords, type ~M-x org-encrypt-entries~.
+
+During ~org-babel-tangle~, it might be too annoying by asking for
+which key to use for encryption each time, use the following
+work-around to bypass it.
+
+#+BEGIN_SRC emacs-lisp
+(setq org-crypt-key "mail@xuchunyang.me")
+(define-advice org-babel-tangle (:around (old-fun &rest r) shutup-epa-file)
+  "Shut up epa-file.
+
+`epa-file' will prompt for which key to use for encryption each
+time if `epa-file-encrypt-to' is not set locally, however it looks like
+local variables embedded in comment will not applied during org-tangle."
+  (with-current-buffer (current-buffer)
+    (cl-assert (eq major-mode 'org-mode))
+    (let (before-save-hook)
+      (org-decrypt-entries)
+      (save-buffer)
+      (define-advice write-region (:before (&rest r) set-epa-file-encrypt-to)
+        (setq-local epa-file-encrypt-to org-crypt-key))
+      (unwind-protect
+          (apply old-fun r)
+        (advice-remove 'write-region #'write-region@set-epa-file-encrypt-to))
+      (org-encrypt-entries)
+      (save-buffer))))
+#+END_SRC
 
 ** ~/.authinfo.gpg                                                    :crypt:
    :PROPERTIES:
