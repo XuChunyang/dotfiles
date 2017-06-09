@@ -343,3 +343,49 @@ iqK6HQ==
 *** Tools    
     - [[https://github.com/Bash-it/bash-it][Bash-it/bash-it: A community Bash framework.]]
     - [[https://github.com/koalaman/shellcheck][koalaman/shellcheck: ShellCheck, a static analysis tool for shell scripts]]
+
+* OfflineIMAP
+
+Write a Python Script [[file:~/.offlineimap.py][file:~/.offlineimap.py]] to extract IMAP password
+from [[file:~/.authinfo.gpg][file:~/.authinfo.gpg]]. I don't know Python, the following is based
+on [[http://quotenil.com/OfflineIMAP-with-Encrypted-Authinfo.html][Gábor Melis' () blog - OfflineIMAP with Encrypted Authinfo]].
+
+#+BEGIN_SRC python :tangle ~/.offlineimap.py :comments link :shebang "#!/usr/bin/env python2" :tangle-mode (identity #o644)
+  import re, os
+
+  def get_authinfo_password(machine, login):
+      s = "machine %s login %s password ([^ ]*)\n" % (machine, login)
+      p = re.compile(s)
+      authinfo = os.popen("gpg2 -q --no-tty -d ~/.authinfo.gpg").read()
+      return p.search(authinfo).group(1)
+#+END_SRC
+
+#+BEGIN_SRC conf :tangle ~/.offlineimaprc :comments link
+  [general]
+  pythonfile = ~/.offlineimap.py
+  accounts = Personal
+
+  [Account Personal]
+  localrepository = Local
+  remoterepository = Remote
+
+  [Repository Local]
+  type = Maildir
+  localfolders = ~/Maildir
+
+  [Repository Remote]
+  type = IMAP
+
+  remotehost = imap.exmail.qq.com
+  remoteuser = mail@xuchunyang.me
+  remotepasseval = get_authinfo_password("imap.exmail.qq.com", "mail@xuchunyang.me")
+  folderfilter = lambda folder: folder in ['INBOX', 'Drafts', 'Deleted Messages', 'Junk', 'Sent Messages', 'Archives']
+  sslcacertfile = /opt/local/etc/openssl/cert.pem
+
+  # Local Variables:
+  # mode: conf
+  # End:
+#+END_SRC
+
+** Resources
+- [[https://wiki.archlinux.org/index.php/OfflineIMAP][OfflineIMAP - ArchWiki]]
