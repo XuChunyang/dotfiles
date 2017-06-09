@@ -32,6 +32,38 @@
 - [[https://github.com/webpro/awesome-dotfiles][webpro/awesome-dotfiles: A curated list of dotfiles resources.]]
 - [[https://github.com/mathiasbynens/dotfiles][mathiasbynens/dotfiles: .files, including ~/.macos — sensible hacker defaults for macOS]]
 
+* Passwords                                                       :passwords:
+
+To view and edit these passwords, type ~M-x org-encrypt-entries~.
+
+** ~/.authinfo.gpg                                                    :crypt:
+   :PROPERTIES:
+   :header-args: :tangle ~/.authinfo.gpg :comments link :tangle-mode (identity #o600)
+   :END:
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v2
+
+hQIMA+LcwErZWE+CAQ//WjN9Y4tVlTxF1yPpMwyBVhInkDpiv4pMGRT1YRDyJ/xl
+e6UUUwF/WY+AsHxoEaehWbNxwL7ubvywxAuJ0WB5KHuzsvtir/Rv13lp2LPYHYJp
+iDInWWzPMyhK/QB+Hdzhqx1hZax4XA+zAIMcylLOVaIw0shsKfQRKKAjjKK9NOp3
+/LkniAx75gdz0ukW9Iolvsz9RAmvJeNURsuQvafV9RIYO8ja7PtFnzzaawC6mflj
+i8jUUHGXUCijyTpbdK1D4+0nj7Hd2ezO4Tb7rWcSuqNdP6jvZMBNLPMAqL6irVRG
+463Ty9RHAbvsRr3EIf8LK+xCutrV9SbSbtAIDx8WyMWw+rpv1ViIs2ojXMH9OWXP
+Rq9PwOTcB+sHF0UJH1StZRjmu33fAGQTV1QlYJo9QBxCAlqMBhh8DRMLBH/8CAoH
+28tAX5j+Gi7LnYm/jREZfhbCsOz8BXApgnP9+J8UoyajNKXbp0Vyou11Lx/Kaqng
++jZcrZP37y5tuzVzu9gapLtG16+SrsjYG1lWhRBBvRXskrkvNLcRoSYPiJfp4A6J
+UTGnLARwzsxnWEb6k0Q0ALZZPjV+gK4hpVM2T/BsU05PSeJwGUlY6dKqzk2V9HoV
+SW5AsPgMGv0+gQ3kgHyxiPvlWgPJ0jgIDr/nDTOpZPrjcQdY4hCfbCNaFMBx0ivS
+wGIBLXiElwMWRD1kvLLhH8sjvcn6AlkUa9DRNXM0xn5aqqC1QxRWZgiNqdy4VqP9
+QtvKcANBn5ZGGHK0wSDnceH7N4AN1eWBZrB8oRNPlfqjaRZyajIwm3pblDSsYbyL
+bSuYqyIyxzXa5HfdKob2eH52zzv7Of4zeuMdkAMx9sv84VcloUIciLmbegd5haqT
+DtdGo/bDwdUvERSUdlQeXvbNh+VSbP1yIYl3bsaIRILkokuW4hONZ7+4XXWMzyVX
+I8h7BS3TSD4aiBtFf161uOItlVPqzN3Z4HEy/H/6mcEBrvD3LyEJUvNdTtC89emJ
+GNnunL+cgZ+lJGmUQ0O9UMvJUThszv/iD/nALsRbTegPZnMM5ZtfynWvunKicYQE
+hxyE7A==
+=WYb4
+-----END PGP MESSAGE-----
+
 * Bash                                                                 :bash:
   :PROPERTIES:
   :header-args:bash: :tangle ~/.bash_profile :comments link
