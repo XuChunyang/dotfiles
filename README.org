@@ -546,8 +546,4 @@ This method is from [[https://gist.github.com/chrisroos/1205934][Instructions fo
     bind ^S savefile main
     bind M-Q findprevious main
     bind M-W findnext main
-
-    # Local Variables:
-    # mode: conf
-    # End:
   #+END_SRC
