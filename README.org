@@ -12,20 +12,6 @@
 
 ** TODO Safer tangle by preventing overriding or showing diff before overriding?
 
-** TODO 生成 Comment Section Header？
-
-举个 Lisp 的例子，我需要的是支持其它 Major Mode 的，比如 Bash，Conf 之类的。可以考虑用 Lisp 实现，然后用 Org src 半自动插入。
-
-#+BEGIN_SRC emacs-lisp
-  ;;*---------------------------------------------------------------------*/
-  ;;*    User configuration ...                                           */
-  ;;*---------------------------------------------------------------------*/
-#+END_SRC
-
-** TODO Support more tools
-   - [X] Git
-   - [X] SSH
-
 ** Resources
 
 - [[https://dotfiles.github.io/][GitHub does dotfiles - dotfiles.github.io]]
@@ -530,3 +516,38 @@ cp /Volumes/USB/backup/gnupg/*.gpg ~/.gnupg
 
 This method is from [[https://gist.github.com/chrisroos/1205934][Instructions for exporting/importing
 (backup/restore) GPG keys]].
+
+* nano
+
+  参考 [[file:/opt/local/share/doc/nano/sample.nanorc][file:/opt/local/share/doc/nano/sample.nanorc]]
+
+  #+BEGIN_SRC conf :tangle ~/.nanorc :comments link
+    ## Use the blank line below the titlebar as extra editing space.
+    set morespace
+
+    ## Switch on multiple file buffers (inserting a file will put it into
+    ## a separate buffer).
+    set multibuffer
+
+    ## Remember the cursor position in each file for the next editing session.
+    set positionlog
+
+    ## Use smooth scrolling as the default.
+    set smooth
+
+    ## Allow nano to be suspended.
+    set suspend
+
+    ## Syntax highlight.
+    include "/opt/local/share/nano/*.nanorc"
+
+    ## Key bindings.
+    ## See nanorc(5) (section REBINDING KEYS) for more details on this.
+    bind ^S savefile main
+    bind M-Q findprevious main
+    bind M-W findnext main
+
+    # Local Variables:
+    # mode: conf
+    # End:
+  #+END_SRC
