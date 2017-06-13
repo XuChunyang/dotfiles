@@ -489,6 +489,8 @@ WcMSeXyacc83K9RTLUnpJ/JaF44exF2bBcARq2734DikXnmtwOtqTjOM8ZdzHyc8
 
    #+BEGIN_SRC conf :mkdirp yes :tangle ~/.ssh/config :comments link
      Host *
+          # If the network connection is down, don't hang
+          ServerAliveInterval 5
           # Master Connection
           # https://unix.stackexchange.com/questions/2857/ssh-easily-copy-file-to-local-system
           ControlMaster auto
