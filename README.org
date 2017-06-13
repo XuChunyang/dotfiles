@@ -90,7 +90,15 @@ iqK6HQ==
    [[file:~/.bash_profile][file:~/.bash_profile]] instead.
 
    #+BEGIN_SRC bash :tangle ~/.bashrc :comments link
-   [ -n "$PS1" ] && source ~/.bash_profile
+     # The variable PS1 is unset in non-interactive shells:
+     # [[https://www.gnu.org/software/bash/manual/html_node/Is-this-Shell-Interactive_003f.html][Bash Reference Manual: Is this Shell Interactive?]]
+     if [ -z "$PS1" ]; then
+         # This shell is not interactive
+         source ~/.path
+     else
+         # This shell is interactive
+         source ~/.bash_profile
+     fi
    #+END_SRC
 
 ** Helper
