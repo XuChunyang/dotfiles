@@ -365,11 +365,15 @@ on [[http://quotenil.com/OfflineIMAP-with-Encrypted-Authinfo.html][Gábor Melis'
 
 #+BEGIN_SRC python :tangle ~/.offlineimap.py :comments link :shebang "#!/usr/bin/env python2" :tangle-mode (identity #o644)
   import re, os
+  from distutils.spawn import find_executable
 
   def get_authinfo_password(machine, login):
       s = "machine %s login %s password ([^ ]*)\n" % (machine, login)
       p = re.compile(s)
-      authinfo = os.popen("gpg2 -q --no-tty -d ~/.authinfo.gpg").read()
+      if find_executable("gpg2"):
+          authinfo = os.popen("gpg2 -q --no-tty -d ~/.authinfo.gpg").read()
+      else:
+          authinfo = os.popen("gpg -q --no-tty -d ~/.authinfo.gpg").read()
       return p.search(authinfo).group(1)
 #+END_SRC
 
