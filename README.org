@@ -101,6 +101,18 @@ iqK6HQ==
      fi
    #+END_SRC
 
+** OS detection
+
+   #+BEGIN_SRC bash
+     function is_mac () {
+         [[ "$OSTYPE" =~ ^darwin ]]
+     }
+
+     function is_gnu_linux () {
+         [[ "$OSTYPE" == linux-gnu ]]
+     }
+   #+END_SRC
+
 ** Helper
 
    #+BEGIN_SRC bash
@@ -196,15 +208,17 @@ iqK6HQ==
 
    #+BEGIN_SRC bash
      # Add tab completion for many Bash commands (MacPorts)
-     if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
+     if is_mac && [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
          . /opt/local/etc/profile.d/bash_completion.sh
+     elif is_gnu_linux && [ -f /usr/share/bash-completion/bash_completion ]; then
+         . /usr/share/bash-completion/bash_completion
      fi
    #+END_SRC
 
 *** Personal bash completion in [[file:~/.bash_completion][file:~/.bash_completion]]
 
     #+BEGIN_SRC bash :tangle ~/.bash_completion :comments link
-      eval "$(pandoc --bash-completion)"
+      command -v pandoc &>/dev/null && eval "$(pandoc --bash-completion)"
 
       # Use a custom version: 1) enable git-ls-files 2) support the alias dotfiles
       # cp /usr/share/bash-completion/completions/git ~/.git-completion.bash
@@ -305,11 +319,16 @@ iqK6HQ==
    Setup [[https://github.com/rupa/z][rupa/z: z - jump around]]:
 
    #+BEGIN_SRC bash
-     file=/opt/local/etc/profile.d/z.sh
+     if is_mac; then
+         file=/opt/local/etc/profile.d/z.sh
+     elif is_gnu_linux; then
+         file=/etc/profile.d/z.sh
+     fi
+
      if [ -f "$file" ]; then
          source "$file"
      else
-         echo "Can't source $file, install it at <https://github.com/rupa/z>"
+         echo "Can't source $file, install it from <https://github.com/rupa/z>"
      fi
      unset file
    #+END_SRC
