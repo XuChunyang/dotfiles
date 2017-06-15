@@ -85,6 +85,27 @@ iqK6HQ==
   :header-args:bash: :tangle ~/.bash_profile :comments link
   :END:
 
+** Meta
+
+*** TODO 学习 Bash
+    变量（全局本地）、判断、控制结构、函数。
+
+    [[https://github.com/javier-lopez/learn/tree/master/sh][learn/sh at master · javier-lopez/learn]]
+
+*** Resources
+
+**** Style Guides
+     - [[https://google.github.io/styleguide/shell.xml][Google Shell Style Guide]]
+     - [[https://github.com/bahamas10/bash-style-guide][bahamas10/bash-style-guide: A style guide for writing safe, predictable, and portable bash scripts (not sh!)]]
+
+**** Guides
+     - [[http://tldp.org/LDP/abs/html/][Advanced Bash-Scripting Guide]]
+     - [[http://wiki.bash-hackers.org/start][The Bash Hackers Wiki {Bash Hackers Wiki}]]
+
+**** Tools    
+     - [[https://github.com/Bash-it/bash-it][Bash-it/bash-it: A community Bash framework.]]
+     - [[https://github.com/koalaman/shellcheck][koalaman/shellcheck: ShellCheck, a static analysis tool for shell scripts]]
+
 ** ~~/.bashrc~ vs ~~/.bash_profile~
 
    Don't use [[file:~/.bashrc][file:~/.bashrc]] to keep configuration, use
@@ -277,7 +298,6 @@ iqK6HQ==
       complete -F _emacsclient emacsclient
     #+END_SRC
 
-
 ** History
 
    The following settings of Bash history is copied from [[https://sanctum.geek.nz/arabesque/better-bash-history/][Better Bash history | Arabesque]].
@@ -343,20 +363,6 @@ iqK6HQ==
    #+BEGIN_SRC bash
      source ~/.emacs.d/misc/emacs.sh
    #+END_SRC
-
-** Resources
-
-*** Style Guides
-    - [[https://google.github.io/styleguide/shell.xml][Google Shell Style Guide]]
-    - [[https://github.com/bahamas10/bash-style-guide][bahamas10/bash-style-guide: A style guide for writing safe, predictable, and portable bash scripts (not sh!)]]
-
-*** Guides
-    - [[http://tldp.org/LDP/abs/html/][Advanced Bash-Scripting Guide]]
-    - [[http://wiki.bash-hackers.org/start][The Bash Hackers Wiki {Bash Hackers Wiki}]]
-
-*** Tools    
-    - [[https://github.com/Bash-it/bash-it][Bash-it/bash-it: A community Bash framework.]]
-    - [[https://github.com/koalaman/shellcheck][koalaman/shellcheck: ShellCheck, a static analysis tool for shell scripts]]
 
 * OfflineIMAP
 
