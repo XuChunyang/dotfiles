@@ -12,6 +12,57 @@
 
 ** TODO Safer tangle by preventing overriding or showing diff before overriding?
 
+   Try the following command instead of ~org-babel-tangle~. Notes
+   - Not work with ~/.authinfo.gpg because GPG simply generates
+     different binary for the same input every time.
+   - Not work with remote files
+
+   #+BEGIN_SRC emacs-lisp :results silent :lexical yes
+     (defun chunyang-org-babel-tangle (&optional arg target-file lang)
+       (interactive "P")
+       (require 'ob-tangle)
+       (require 'seq)
+       (require 'cl-lib)
+       (save-some-buffers)
+       (let* ((tmpdir (let ((dir "/tmp/org-babel-tangle/"))
+                        (or (file-exists-p dir) (make-directory dir))
+                        dir))
+              (mkbak (lambda (filename)
+                       (expand-file-name
+                        (replace-regexp-in-string "/" "!" (expand-file-name filename))
+                        tmpdir)))
+              (diffp (lambda (file-a file-b)
+                       (/= 0 (call-process diff-command nil nil nil (expand-file-name file-a) file-b))))
+              (swap (lambda (file-a file-b)
+                      (let ((tmp (make-temp-name tmpdir)))
+                        (copy-file file-a tmp t t t t)
+                        (copy-file file-b file-a t t t t)
+                        (copy-file tmp file-b t t t t))))
+              deleted-files
+              tangled-files
+              (advice (define-advice delete-file (:around (old-fun filename &rest args) dont-delete)
+                        (push filename deleted-files)
+                        (copy-file filename (funcall mkbak filename) t t t t)
+                        (apply old-fun filename args))))
+         (unwind-protect
+             (progn
+               (setq tangled-files (org-babel-tangle arg target-file lang)
+                     deleted-files (nreverse deleted-files))
+               (cl-loop for f in (seq-intersection deleted-files tangled-files)
+                        for bak = (funcall mkbak f)
+                        do
+                        (funcall swap f bak)
+                        (if (funcall diffp f bak)
+                            (with-current-buffer (find-file-noselect f)
+                              (message "Will Diff %s..." f)
+                              (delete-region (point-min) (point-max))
+                              (insert-file-contents bak))
+                          (message "Skip %s..." f))
+                        finally (save-some-buffers)))
+           (advice-remove 'delete-file advice))))
+   #+END_SRC
+
+
 ** Resources
 
 - [[https://dotfiles.github.io/][GitHub does dotfiles - dotfiles.github.io]]
@@ -29,7 +80,7 @@ During ~org-babel-tangle~, it might be too annoying by asking for
 which key to use for encryption each time, use the following
 work-around to bypass it.
 
-#+BEGIN_SRC emacs-lisp :results silent
+#+BEGIN_SRC emacs-lisp :results silent :lexical yes
   (require 'org-crypt)
   (setq org-crypt-key "mail@xuchunyang.me")
   (define-advice org-babel-tangle (:around (old-fun &rest r) shutup-epa-file)
