@@ -625,3 +625,20 @@ This method is from [[https://gist.github.com/chrisroos/1205934][Instructions fo
     # you in case of errors).  Wget does *not* send `From:' by default.
     header = From: Chunyang Xu <mail@xuchunyang.me>
   #+END_SRC
+
+** Tips
+
+*** Redirect wget to standard output
+
+    用 ~--output-document/-O~ 选项
+
+    #+BEGIN_SRC bash
+      wget --quiet --output-document=- xuchunyang.me
+      wget -q -O - xuchunyang.me
+    #+END_SRC
+
+    也可以写成更短的，不知道参数本来就可以这么写，又或者只是 Wget 的一个特例？
+
+    #+BEGIN_SRC bash
+      wget -qO- xuchunyang.me
+    #+END_SRC
