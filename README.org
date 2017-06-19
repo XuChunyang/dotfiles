@@ -10,15 +10,18 @@
 - To propagate changes in dotfiles (such as ~~/.bash_profile~) to this
   file, type ~M-x org-babel-detangle~ in Emacs.
 
-** TODO Safer tangle by preventing overriding or showing diff before overriding?
+** DONE Safer ~org-babel-tangle~
 
-   Try the following command instead of ~org-babel-tangle~. Notes
-   - Not work with ~/.authinfo.gpg because GPG simply generates
-     different binary for the same input every time.
-   - Not work with remote files
+   Use the following command instead of ~org-babel-tangle~ to avoid
+   overriding exist files. Notes that
+   - it doesn't respect :tangle-mode if the exiting file has different
+     mode bits with :tangle-mode.
+   - it might not work with remote file
 
    #+BEGIN_SRC emacs-lisp :results silent :lexical yes
      (defun chunyang-org-babel-tangle (&optional arg target-file lang)
+       "Like `org-babel-tangle' but don't override without permission."
+       (declare (interactive-only org-babel-tangle))
        (interactive "P")
        (require 'ob-tangle)
        (require 'seq)
@@ -54,7 +57,7 @@
                         (funcall swap f bak)
                         (if (funcall diffp f bak)
                             (with-current-buffer (find-file-noselect f)
-                              (message "Will Diff %s..." f)
+                              (message "Diff %s..." f)
                               (delete-region (point-min) (point-max))
                               (insert-file-contents bak))
                           (message "Skip %s..." f))
