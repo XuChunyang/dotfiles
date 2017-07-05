@@ -1,6 +1,19 @@
 #+TITLE: My Dotfiles in Org mode
 #+CATEGORY: dotfiles
 
+* Table of Contents                                                   :TOC_1:
+- [[#meta][Meta]]
+- [[#passwords][Passwords]]
+- [[#bash][Bash]]
+- [[#isync][isync]]
+- [[#offlineimap][OfflineIMAP]]
+- [[#notmuch][Notmuch]]
+- [[#git][Git]]
+- [[#ssh][SSH]]
+- [[#gnupg][GnuPG]]
+- [[#nano][nano]]
+- [[#wget][Wget]]
+
 * Meta                                                             :dotfiles:
 
 ** How to use this file?
@@ -64,7 +77,6 @@
                         finally (save-some-buffers)))
            (advice-remove 'delete-file advice))))
    #+END_SRC
-
 
 ** Resources
 
