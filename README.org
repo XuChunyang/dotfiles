@@ -413,7 +413,48 @@ hcfoxxelkuFnQyo8/g13p/RuuMRfhG17IS2KH+DtJaQMlag9J0E6w6SxD2w=
      source ~/.emacs.d/misc/emacs.sh
    #+END_SRC
 
-* OfflineIMAP
+* isync                                                               :email:
+
+OfflineImap 报 "Too many read 0" 错误
+
+#+BEGIN_EXAMPLE
+abort: command: FETCH => socket error: <type 'exceptions.IOError'> - Too many read 0
+#+END_EXAMPLE
+
+转而用 [[http://isync.sourceforge.net/][isync]] 。下面的配置是从 [[https://wiki.archlinux.org/index.php/Isync][isync - ArchWiki]] 抄来的，其中的 "gmail" 懒得改了。
+
+#+BEGIN_SRC conf :tangle ~/.mbsyncrc :comments link
+  IMAPAccount gmail
+  # Address to connect to
+  Host imap.exmail.qq.com
+  User mail@xuchunyang.me
+  # gem install netrc
+  PassCmd "ruby -r netrc -e 'print (Netrc.read(File.expand_path(\"~/.authinfo.gpg\"))[\"imap.exmail.qq.com\"]).password'"
+  #
+  # Use SSL
+  SSLType IMAPS
+  CertificateFile /opt/local/share/curl/curl-ca-bundle.crt
+
+  IMAPStore gmail-remote
+  Account gmail
+
+  MaildirStore gmail-local
+  # The trailing "/" is important
+  Path ~/.mail/
+  Inbox ~/.mail/Inbox
+
+  Channel gmail
+  Master :gmail-remote:
+  Slave :gmail-local:
+  # Or include everything
+  Patterns *
+  # Automatically create missing mailboxes, both locally and on the server
+  Create Both
+  # Save the synchronization state files in the relevant directory
+  SyncState *
+#+END_SRC
+
+* OfflineIMAP                                                         :email:
 
 Write a Python Script [[file:~/.offlineimap.py][file:~/.offlineimap.py]] to extract IMAP password
 from [[file:~/.authinfo.gpg][file:~/.authinfo.gpg]]. I don't know Python, the following is based
@@ -459,7 +500,7 @@ on [[http://quotenil.com/OfflineIMAP-with-Encrypted-Authinfo.html][Gábor Melis'
 ** Resources
 - [[https://wiki.archlinux.org/index.php/OfflineIMAP][OfflineIMAP - ArchWiki]]
 
-* Notmuch                                                           :notmuch:
+* Notmuch                                                             :email:
 
 ** Hooks
 
@@ -471,7 +512,7 @@ on [[http://quotenil.com/OfflineIMAP-with-Encrypted-Authinfo.html][Gábor Melis'
      echo "pre-new hook Done!"
    #+END_SRC
 
-   #+BEGIN_SRC sh :tangle ~/Maildir/.notmuch/hooks/post-new :mkdirp yes :shebang "#!/usr/bin/env bash" :commants link
+   #+BEGIN_SRC sh :tangle ~/Maildir/.notmuch/hooks/post-new :mkdirp yes :shebang "#!/usr/bin/env bash" :comments link
      # [[man:notmuch-hooks][Manpage for notmuch-hooks]]
      # 
      # [[https://notmuchmail.org/initial_tagging/][initial tagging]]
