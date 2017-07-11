@@ -382,7 +382,7 @@ hcfoxxelkuFnQyo8/g13p/RuuMRfhG17IS2KH+DtJaQMlag9J0E6w6SxD2w=
      shopt -s cmdhist
 
      # Store history immediately
-     PROMPT_COMMAND='history -a'
+     PROMPT_COMMAND='history -a;'
    #+END_SRC
 
 *** TODO Read [[https://sanctum.geek.nz/arabesque/better-bash-history/][Better Bash history | Arabesque]] again
@@ -423,6 +423,27 @@ hcfoxxelkuFnQyo8/g13p/RuuMRfhG17IS2KH+DtJaQMlag9J0E6w6SxD2w=
 
    #+BEGIN_SRC bash
      source ~/.emacs.d/misc/emacs.sh
+   #+END_SRC
+
+** iTerm2
+
+   With [[https://www.iterm2.com/documentation-shell-integration.html][iTerm2 Shell Integration]], iTerm2 can 
+
+   - track recent used directories
+   - capture command results
+   - set mark
+   - view command exit status
+   - view command history
+   - switch profile automatically
+
+   To install, first downlaod the script:
+   #+BEGIN_SRC bash :tangle no
+     curl -L https://iterm2.com/misc/bash_startup.in -o ~/.iterm2_shell_integration.bash
+   #+END_SRC
+
+   Then load it:
+   #+BEGIN_SRC bash
+     [ "$TERM_PROGRAM" == "iTerm.app" ] && source_maybe "$HOME/.iterm2_shell_integration.bash"
    #+END_SRC
 
 * isync                                                               :email:
