@@ -580,11 +580,13 @@ on [[http://quotenil.com/OfflineIMAP-with-Encrypted-Authinfo.html][Gábor Melis'
              email = mail@xuchunyang.me
              signingkey = A952083AF6D0A8BF
      [gpg]
-             program = gpg2
+             program = gpg
      [credential]
              helper = osxkeychain
      [http]
              proxy = socks5://localhost:1080
+     [include]
+             path = .gitconfig_local
    #+END_SRC
 
 * SSH                                                                   :ssh:
