@@ -587,7 +587,21 @@ on [[http://quotenil.com/OfflineIMAP-with-Encrypted-Authinfo.html][Gábor Melis'
              proxy = socks5://localhost:1080
      [core]
              # Restroe Terminal after quitting
-             pager = less -+X
+             #
+             # See [[man:git-config][Manpage for git-config]] and [[man:less][Manpage for less]]
+             #
+             # Git defaults to less FRX
+             #
+             # -F or --quit-if-one-screen
+             # -R or --RAW-CONTROL-CHARS
+             # -X or --no-init
+             #
+             # XXX: -F doesn't work without -X, see
+             # https://unix.stackexchange.com/questions/107315/less-quit-if-one-screen-without-no-init
+             #
+             # Thus deactivate X to restore terminal, and deactivate F to work with
+             # it.
+             pager = less -+X -+F
      [include]
              path = .gitconfig_local
    #+END_SRC
