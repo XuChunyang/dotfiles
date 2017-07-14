@@ -585,6 +585,9 @@ on [[http://quotenil.com/OfflineIMAP-with-Encrypted-Authinfo.html][Gábor Melis'
              helper = osxkeychain
      [http]
              proxy = socks5://localhost:1080
+     [core]
+             # Restroe Terminal after quitting
+             pager = less -+X
      [include]
              path = .gitconfig_local
    #+END_SRC
