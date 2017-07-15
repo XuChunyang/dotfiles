@@ -385,6 +385,20 @@ hcfoxxelkuFnQyo8/g13p/RuuMRfhG17IS2KH+DtJaQMlag9J0E6w6SxD2w=
      PROMPT_COMMAND='history -a;'
    #+END_SRC
 
+   Select history with [[https://github.com/peco/peco][peco]] (base on [[http://qiita.com/comutt/items/f54e755f22508a6c7d78][bash/zsh のヒストリを peco で便利にする - Qiita]]):
+
+   #+BEGIN_SRC bash
+     peco-select-history () {
+         declare l=$(HISTTIMEFORMAT= history | tac | peco --query "$READLINE_LINE" | cut -c 8-)
+         READLINE_LINE="$l"
+         READLINE_POINT=${#l}
+     }
+
+     bind -x '"\C-r": peco-select-history'
+   #+END_SRC
+
+   See also [[https://github.com/junegunn/fzf/wiki/examples#command-history][Examples · junegunn/fzf Wiki]] and [[https://github.com/peco/peco/wiki/Sample-Usage][Sample Usage · peco/peco Wiki]].
+
 *** TODO Read [[https://sanctum.geek.nz/arabesque/better-bash-history/][Better Bash history | Arabesque]] again
 
 ** Change directory
