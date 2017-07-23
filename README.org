@@ -460,6 +460,41 @@ hcfoxxelkuFnQyo8/g13p/RuuMRfhG17IS2KH+DtJaQMlag9J0E6w6SxD2w=
      [ "$TERM_PROGRAM" == "iTerm.app" ] && source_maybe "$HOME/.iterm2_shell_integration.bash"
    #+END_SRC
 
+* Readline
+
+  [[info:bash#Readline%20Init%20File][info:bash#Readline Init File]]
+
+  #+BEGIN_SRC conf :tangle ~/.inputrc :comments link
+    # This file controls the behaviour of line input editing for
+    # programs that use the GNU Readline library.  Existing
+    # programs include FTP, Bash, and GDB.
+    #
+    # You can re-read the inputrc file with C-x C-r.
+    # Lines beginning with '#' are comments.
+    #
+    # First, include any system-wide bindings and variable
+    # assignments from /etc/Inputrc
+    $include /etc/Inputrc
+
+    $if Bash
+    # edit the path
+    "\C-xp": "PATH=${PATH}\e\C-e\C-a\ef\C-f"
+    # prepare to type a quoted word --
+    # insert open and close double quotes
+    # and move to just after the open quote
+    "\C-x\"": "\"\"\C-b"
+    # Quote the current or previous word
+    "\C-xq": "\eb\"\ef\""
+    $endif
+
+    # For FTP
+    $if Ftp
+    "\C-xg": "get \M-?"
+    "\C-xt": "put \M-?"
+    "\M-.": yank-last-arg
+    $endif
+  #+END_SRC
+
 * isync                                                               :email:
 
 OfflineImap 报 "Too many read 0" 错误
