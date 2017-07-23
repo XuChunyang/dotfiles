@@ -372,8 +372,8 @@ hcfoxxelkuFnQyo8/g13p/RuuMRfhG17IS2KH+DtJaQMlag9J0E6w6SxD2w=
      HISTSIZE=1000000
 
      # Don’t store specific lines
-     HISTCONTROL=ignoreboth
-     HISTIGNORE='ls:bg:fg:history'
+     HISTCONTROL='ignorespace:ignoredups'
+     HISTIGNORE='pwd:ls:bg:fg:history'
 
      # Record timestamps
      HISTTIMEFORMAT='%F %T '
