@@ -285,6 +285,9 @@ hcfoxxelkuFnQyo8/g13p/RuuMRfhG17IS2KH+DtJaQMlag9J0E6w6SxD2w=
 
      # Print each PATH entry on a separate line
      alias path='echo -e ${PATH//:/\\n}'
+
+     # Cat with syntax highlight
+     alias e2ansi-cat="$HOME/src/e2ansi/bin/e2ansi-cat"
    #+END_SRC
 
 ** Completion
