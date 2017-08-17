@@ -512,28 +512,28 @@ abort: command: FETCH => socket error: <type 'exceptions.IOError'> - Too many re
 转而用 [[http://isync.sourceforge.net/][isync]] 。下面的配置是从 [[https://wiki.archlinux.org/index.php/Isync][isync - ArchWiki]] 抄来的，其中的 "gmail" 懒得改了。
 
 #+BEGIN_SRC conf :tangle ~/.mbsyncrc :comments link
-  IMAPAccount gmail
+  IMAPAccount main
   # Address to connect to
-  Host imap.exmail.qq.com
+  Host imap.migadu.com
   User mail@xuchunyang.me
   # gem install netrc
-  PassCmd "ruby -r netrc -e 'print (Netrc.read(File.expand_path(\"~/.authinfo.gpg\"))[\"imap.exmail.qq.com\"]).password'"
+  PassCmd "ruby -r netrc -e 'print (Netrc.read(File.expand_path(\"~/.authinfo.gpg\"))[\"imap.migadu.com\"]).password'"
   #
   # Use SSL
   SSLType IMAPS
   CertificateFile /opt/local/share/curl/curl-ca-bundle.crt
 
-  IMAPStore gmail-remote
-  Account gmail
+  IMAPStore main-remote
+  Account main
 
-  MaildirStore gmail-local
+  MaildirStore main-local
   # The trailing "/" is important
   Path ~/.mail/
-  Inbox ~/.mail/Inbox
+  Inbox ~/.mail/INBOX
 
-  Channel gmail
-  Master :gmail-remote:
-  Slave :gmail-local:
+  Channel main
+  Master :main-remote:
+  Slave :main-local:
   # Or include everything
   Patterns *
   # Automatically create missing mailboxes, both locally and on the server
@@ -591,15 +591,15 @@ on [[http://quotenil.com/OfflineIMAP-with-Encrypted-Authinfo.html][Gábor Melis'
 
 ** Hooks
 
-   #+BEGIN_SRC sh :tangle ~/Maildir/.notmuch/hooks/pre-new :mkdirp yes :shebang "#!/usr/bin/env bash" :comments link
+   #+BEGIN_SRC sh :tangle ~/.mail/.notmuch/hooks/pre-new :mkdirp yes :shebang "#!/usr/bin/env bash" :comments link
      set -x
 
-     offlineimap
+     mbsync -V -a
 
      echo "pre-new hook Done!"
    #+END_SRC
 
-   #+BEGIN_SRC sh :tangle ~/Maildir/.notmuch/hooks/post-new :mkdirp yes :shebang "#!/usr/bin/env bash" :comments link
+   #+BEGIN_SRC sh :tangle ~/.mail/.notmuch/hooks/post-new :mkdirp yes :shebang "#!/usr/bin/env bash" :comments link
      # [[man:notmuch-hooks][Manpage for notmuch-hooks]]
      # 
      # [[https://notmuchmail.org/initial_tagging/][initial tagging]]
@@ -607,12 +607,12 @@ on [[http://quotenil.com/OfflineIMAP-with-Encrypted-Authinfo.html][Gábor Melis'
 
      set -x
 
-     notmuch tag +to-me -- to:mail@xuchunyang.me and not tag:to-me 
-     notmuch tag +sent -- from:mail@xuchunyang.me and not tag:sent
-     notmuch tag +org -- to:emacs-orgmode@gnu.org and not tag:org
-     notmuch tag +emacs -- to:emacs-devel@gnu.org and not tag:emacs
-     notmuch tag +emacs -- to:help-gnu-emacs@gnu.org and not tag:emacs
-     notmuch tag +notmuch -- to:notmuch@notmuchmail.org and not tag:notmuch
+     # notmuch tag +to-me -- to:mail@xuchunyang.me and not tag:to-me
+     # notmuch tag +sent -- from:mail@xuchunyang.me and not tag:sent
+     # notmuch tag +org -- to:emacs-orgmode@gnu.org and not tag:org
+     # notmuch tag +emacs -- to:emacs-devel@gnu.org and not tag:emacs
+     # notmuch tag +emacs -- to:help-gnu-emacs@gnu.org and not tag:emacs
+     # notmuch tag +notmuch -- to:notmuch@notmuchmail.org and not tag:notmuch
 
      echo "post-new hook Done!"
    #+END_SRC
