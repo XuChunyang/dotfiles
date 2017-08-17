@@ -126,24 +126,24 @@ work-around to bypass it.
 -----BEGIN PGP MESSAGE-----
 Version: GnuPG v2
 
-hQIMA+LcwErZWE+CARAAjCm0pl6Xg1/x3GhinVILk0wr4eKfvkDnGBLj73dlZZDy
-2tz3duv+5JHn0EstigED8/TeuzES/zqeI/5s8TDKKqLGquq4TLLkmNscbkk2gzxE
-pV+OFYi05uC8F0lW7Wer4mD2mJCHwhhB90m2BHi5PifKrQnQ4EFSGkSZ87WUnF5G
-Gv2fCfYDKWBU6MN9XlhcxHXuRN6v4ATjtrM0U8Ip2juvF4G5mqEFUQr3XPGhfvHX
-UQdiW2wnwWq9a4ODOLc9yYx0Mrf2pvn9HlH3v/Y3+qoEcoqhSMQOWXA2/Xr0mWnC
-pVmY0V5NSmXzxKtkmExtrYGA/qF/Awug6WpzXFx7O6JPbvKBMOTrQuskJHWyA+eS
-C4L6TBclE1ot/oxyDSNBCoTwEIK4CvfZaIQAQFLVSMXaq/OfI7JthNRsF4NqOBuJ
-psdEHT6E6sTiMtN9ef+W7GoOgHNYW/YFZzhRAmjA9KdXxpcY5vQkM3GuUxhBYsxg
-ppfVXek+7sT6rco3KwHHzJpyzVFtuwkZWt0YKzKUDKShSje2UVCbjeisRE5Mf0kA
-+uQqKo+2phxYihGb44ddDgjzNQuDT7IDEtsf1Sh/OVXJ0ldgy8kgnPB74AeJQVLN
-C2GIahZm324jlIDFHhQRimx4G90Kl8v58My4xF03iBruv7A0fiRl7f1h1VVfTVzS
-wFoBv1XUCIH0u9EuwbNn7TBktTSBRA625/ZDqO9QeMn+9QQ6mp+mLK/9Pp8ERzhd
-/CKTNIGv/Uij7xzteIriklIfhPHSCUzPuZXZ/7t9zLIlbp8rjJfOM6MP6Us9xoFS
-xaZRCXLcF6zCt32hYBabeDl9ISrrNWn5BKnXLxp4Bo/x4WRD5ahBlWe6CymaUhkb
-acaE8zl7GyOQKr8uMFNsP8JqGD67wjE/GUw/wJRPqYa/Ey942Lz56zaXB096oEuR
-XLG0Q+g/M4UV6m5BWC/AJeqeL+5aLk6nqA8SafwDVlPSkijEe3IagNn+qk37V6La
-hcfoxxelkuFnQyo8/g13p/RuuMRfhG17IS2KH+DtJaQMlag9J0E6w6SxD2w=
-=Yzf7
+hQIMA+LcwErZWE+CARAAkDKQp7aAUKRDjy3cRYyG+FfVZCSBWG4yYz41kXa51mfV
+Qd21dUflyoCxnT1XizaXhzHnuIXEShxXzdJOUyTD8aL1Bc2GexZUs/jWZiZpGESq
+nuYvfNTeOUbXQW3Ub8Q4NngjR+xoOrupt64DVYPaFi5LsQeDYDHdoUHszjLuilCF
+1pkkwowOBKrIxpRbznNts+4dD6TGdFyfIlowcds9PoNKWV6iFzqARmgVkKvyAv54
+F7neoaMbIcdbymj+euR/abE4pTH0Su/mHmm1oat9vh9RWFlH4RF1rrsJgjXkxX0F
+NWmPJgb9thYVEY7Ooijj+10Pd1NGWpNCE9+3HUsVKONDMW/PvX29Ve4QFqIdMmte
+fqFlE/SVBAkdMLmVB9y53lcZxrpE22LVsv4GQrzPw5K77AnO8sWzxEd8k/ijqJco
+Jvox/jOm0XaZO2bUa7KUnz1J1l/aDvnfHw/iWeg25S5/86sU3QXXbN2heuHq46NL
+b0GkCb06EL2Xq/b3BSDoJXY57BuROl2FQXhBxPNYzmjKKbEL4qQ98j49ny2hWtSd
+gud9IDxIVwqU1pfKSQ2eUm9kBzYWzhbKa8zHcHpYr4GnLoeK6tdZclvcmThqbOu8
+pcoW4e4ouTxGLmH2E91XACrSV1AUcm1hKrAaozsStlP+o6WJuCj9h8AQJVG/3MDS
+wFUBbA/dWHGZl4ZXIq6JqRRPqSqA9JzxpA/xJCLy+USav7U7G9lABDbSR0GUeSI+
+dlnSjFHa01pIkgrb26rWThYnGVBeEJPQyqp7rwfDX2nLX2AZA/EErMeNQCCaAzFk
+PI5hTOkFME3G00wyWnczBTbfVjXUWbBYfqtJLYpN12ZvNG0z2sy4TWQb3YWcSNIa
+dyxXsmGyIXYWCUpfh21qqCPm+KxeVg6CmXPgESmUWb31Y3aC5YvmR2ABYyTCqqby
+6XlsI00xj9YeTK5xmqchSXcjHdHWUGAq9IEVSgL3hp9ET33r1l42zd3aHJqmiaFm
+xmMzK1KWgt5jJYKKz1snAgCCFdGq3fx6Dh4fcIv40HwTa/yDGvVV
+=PH15
 -----END PGP MESSAGE-----
 
 * Bash                                                                 :bash:
@@ -578,10 +578,9 @@ on [[http://quotenil.com/OfflineIMAP-with-Encrypted-Authinfo.html][Gábor Melis'
   [Repository Remote]
   type = IMAP
 
-  remotehost = imap.exmail.qq.com
+  remotehost = imap.migadu.com
   remoteuser = mail@xuchunyang.me
-  remotepasseval = get_authinfo_password("imap.exmail.qq.com", "mail@xuchunyang.me")
-  folderfilter = lambda folder: folder in ['INBOX', 'Drafts', 'Deleted Messages', 'Junk', 'Sent Messages', 'Archives']
+  remotepasseval = get_authinfo_password("imap.migadu.com", "mail@xuchunyang.me")
   sslcacertfile = /opt/local/etc/openssl/cert.pem
 #+END_SRC
 
