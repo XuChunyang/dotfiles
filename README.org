@@ -638,7 +638,7 @@ on [[http://quotenil.com/OfflineIMAP-with-Encrypted-Authinfo.html][Gábor Melis'
      [credential]
              helper = osxkeychain
      [http]
-             proxy = socks5://localhost:1080
+             proxy = socks5://localhost:1086
      [core]
              # Restroe Terminal after quitting
              #
