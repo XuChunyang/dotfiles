@@ -844,3 +844,47 @@ This method is from [[https://gist.github.com/chrisroos/1205934][Instructions fo
     #+BEGIN_SRC bash
       wget -qO- xuchunyang.me
     #+END_SRC
+
+* Hammerspoon                                                           :mac:
+
+  #+BEGIN_SRC lua :tangle ~/.hammerspoon/init.lua :mkdirp yes :comments link
+    -- http://www.hammerspoon.org/
+
+    hs.hotkey.bind({"ctrl", "cmd"}, "left", function()
+          local win = hs.window.focusedWindow()
+          local f = win:frame()
+          local screen = win:screen()
+          local max = screen:frame()
+
+          f.x = max.x
+          f.y = max.y
+          f.w = max.w / 2
+          f.h = max.h
+          win:setFrame(f)
+    end)
+
+    hs.hotkey.bind({"ctrl", "cmd"}, "right", function()
+          local win = hs.window.focusedWindow()
+          local f = win:frame()
+          local screen = win:screen()
+          local max = screen:frame()
+
+          f.x = max.x + (max.w / 2)
+          f.y = max.y
+          f.w = max.w / 2
+          f.h = max.h
+          win:setFrame(f)
+    end)
+
+    hs.hotkey.bind({"ctrl", "cmd"}, "up", function()
+          local win = hs.window.focusedWindow()
+          win:maximize()
+    end)
+
+    hs.hotkey.bind({"ctrl", "cmd"}, "down", function()
+          local win = hs.window.focusedWindow()
+          win:centerOnScreen()
+    end)
+
+    hs.alert.show("init.lua reloaded")
+  #+END_SRC
