@@ -288,6 +288,9 @@ xmMzK1KWgt5jJYKKz1snAgCCFdGq3fx6Dh4fcIv40HwTa/yDGvVV
      # Print each PATH entry on a separate line
      alias path='echo -e ${PATH//:/\\n}'
 
+     # Use color with Grep
+     alias grep="command grep --color=auto"
+
      # Cat with syntax highlight
      alias e2ansi-cat="$HOME/src/e2ansi/bin/e2ansi-cat"
    #+END_SRC
