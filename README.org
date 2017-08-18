@@ -820,7 +820,7 @@ This method is from [[https://gist.github.com/chrisroos/1205934][Instructions fo
 
   #+BEGIN_SRC conf :tangle ~/.wgetrc :comments link
     # Set this to on to use timestamping by default:
-    timestamping = on
+    # timestamping = on
 
     # It is a good idea to make Wget send your email address in a `From:'
     # header with your request (so that server administrators can contact
