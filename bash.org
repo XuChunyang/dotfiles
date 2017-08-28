@@ -26,10 +26,9 @@
      - [[https://github.com/Bash-it/bash-it][Bash-it/bash-it: A community Bash framework.]]
      - [[https://github.com/koalaman/shellcheck][koalaman/shellcheck: ShellCheck, a static analysis tool for shell scripts]]
 
-** ~~/.bashrc~ vs ~~/.bash_profile~
+** ~/.bashrc vs ~/.bash_profile
 
-   Don't use [[file:~/.bashrc][file:~/.bashrc]] to keep configuration, use
-   [[file:~/.bash_profile][file:~/.bash_profile]] instead.
+   Don't use ~/.bashrc to keep configuration, use ~/.bash_profile instead.
 
    #+BEGIN_SRC bash :tangle ~/.bashrc :comments link
      # The variable PS1 is unset in non-interactive shells:
